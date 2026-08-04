@@ -1,0 +1,85 @@
+---
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { locales, htmlLang, useTranslations, type Locale } from '../i18n/ui';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+// フォントはセルフホスト（@fontsource）だが、言語ごとに必要なものだけを
+// 各ロケールのルートファイルで読み込む（Fonts{Ja,En,Zh}.astro）。
+// 全言語分をここで読むと不要なCJKフォントで Style&Layout が肥大化するため。
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  /** ロケール非依存のスラッグ: '' | 'services' | 'about' | 'contact' | 'contact/thanks' */
+  slug: string;
+  /** TOP のみ true（ヘッダー初期透過＋ヒーロー用） */
+  transparentStart?: boolean;
+  /** OGP 画像パス（/og/ja.png など） */
+  ogImage?: string;
+  /** thanks など検索インデックス不要のページ */
+  noindex?: boolean;
+}
+
+const {
+  locale,
+  title,
+  description,
+  slug,
+  transparentStart = false,
+  ogImage,
+  noindex = false,
+} = Astro.props;
+
+const t = useTranslations(locale);
+
+// hreflang: 全ページに3言語分の alternate + x-default を出す（第7-3章）
+const alternates = locales.map((loc) => ({
+  hreflang: htmlLang[loc],
+  href: getAbsoluteLocaleUrl(loc, slug),
+}));
+const xDefault = getAbsoluteLocaleUrl('ja', slug);
+const canonical = getAbsoluteLocaleUrl(locale, slug);
+
+// OGP画像は言語ごと（/og/ja.png など）。【要確認】画像未用意のためパスのみ。
+const ogImagePath = ogImage ?? `/og/${locale}.png`;
+const ogImageUrl = new URL(ogImagePath, Astro.site).href;
+---
+
+<!doctype html>
+<html lang={htmlLang[locale]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+
+    <!-- hreflang（第7-3章） -->
+    {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
+
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={t.meta.siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={htmlLang[locale].replace('-', '_')} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0B0A09" />
+  </head>
+  <body>
+    <a class="zi-skip-link" href="#main">{t.common.skipToContent}</a>
+    <Header locale={locale} currentSlug={slug} transparentStart={transparentStart} />
+    <main id="main" class:list={{ 'main-overlay': transparentStart }}>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

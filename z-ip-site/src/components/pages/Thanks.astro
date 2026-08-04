@@ -1,0 +1,56 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations, type Locale } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const th = t.thanks;
+const homeHref = getRelativeLocaleUrl(locale, '');
+const title = `${th.title}｜${t.meta.siteName}`;
+---
+
+<BaseLayout locale={locale} title={title} description={th.body} slug="contact/thanks" noindex={true}>
+  <section class="thanks zi-surface-ink-900">
+    <div class="zi-container thanks-inner">
+      <p class="zi-label thanks-label">MESSAGE RECEIVED</p>
+      <h1 class="thanks-heading">{th.heading}</h1>
+      <p class="thanks-body">{th.body}</p>
+      <a class="zi-textlink thanks-back" href={homeHref}>{th.back}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thanks {
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    padding-block: clamp(80px, 14vh, 160px);
+  }
+  .thanks-inner {
+    max-width: 640px;
+  }
+  .thanks-label {
+    color: var(--vermillion-light);
+    margin-bottom: 20px;
+  }
+  .thanks-heading {
+    color: var(--white);
+  }
+  .thanks-body {
+    margin-top: 20px;
+    color: var(--gray-300);
+    max-width: 48ch;
+  }
+  .thanks-back {
+    display: inline-block;
+    margin-top: 36px;
+    font-family: var(--font-label);
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+  }
+</style>

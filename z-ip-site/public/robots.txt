@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 【要確認】正式ドメイン確定後に astro.config.mjs の site とあわせて更新される
+Sitemap: https://www.z-ip.co.jp/sitemap-index.xml

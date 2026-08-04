@@ -1,0 +1,362 @@
+{
+  "meta": {
+    "siteName": "Z-IP 株式会社",
+    "titleTop": "Z-IP 株式会社｜日本的故事，同步抵达世界。",
+    "descTop": "Z-IP 与漫画家直接签约，通过 AI 流程完成多语言化与动态漫画制作，让作品同步抵达世界的全球出版公司。"
+  },
+  "common": {
+    "skipToContent": "跳至正文",
+    "viewService": "查看服务",
+    "toContact": "联系我们"
+  },
+  "nav": {
+    "top": "首页",
+    "services": "服务",
+    "about": "关于我们",
+    "contact": "联系我们"
+  },
+  "lang": {
+    "ja": "日本語",
+    "en": "EN",
+    "zh": "简体中文",
+    "switchAria": "切换语言"
+  },
+  "hero": {
+    "label": "GLOBAL MANGA PUBLISHER",
+    "heading": "日本的故事，同步抵达世界。",
+    "sub": "Z-IP 与漫画家直接签约，通过 AI 流程完成多语言化与动态漫画制作，由世界各地的粉丝之手同步送达的全球出版公司。",
+    "scrollHint": "SCROLL"
+  },
+  "statement": {
+    "lines": [
+      "世界上，还有尚未抵达你的故事。",
+      "语言的壁垒、发行的滞后、盗版的横行，都源自“一个国家一个国家地送达”这一陈旧前提。",
+      "Z-IP 要替换掉这个前提本身。"
+    ]
+  },
+  "engines": {
+    "label": "TWO ENGINES",
+    "a": {
+      "tag": "引擎 A",
+      "name": "PANEL",
+      "label": "GLOBAL PUBLISHING",
+      "heading": "让自有 IP 同步抵达世界",
+      "body": "与顶尖创作者签订直接出版合约，通过 AI 自动化流程完成多语言翻译与动态漫画制作，向全球同步发行。经由实时社交数据验证的爆款，再与当地伙伴一同推进动画化、周边与游戏化。",
+      "imageAlt": "漫画家伏案作画的手部特写"
+    },
+    "b": {
+      "tag": "引擎 B",
+      "name": "CLIPYIELD",
+      "label": "GLOBAL IP DISTRIBUTION",
+      "heading": "承接全球 IP 的扩散",
+      "body": "承接来自世界各地 IP 方的委托，借助各国剪辑创作者（clipper）与粉丝网络，在全球范围内同步扩散。通过权利方认可的白名单，从结构上消除扩散方所承担的著作权风险。",
+      "imageAlt": "用智能手机拍摄与剪辑视频的年轻创作者"
+    },
+    "relation": "这两者并非先后顺序，而是并行推进。彼此的实绩互为信用，扩散网络的厚度成为双方共同的推动力。"
+  },
+  "moat": {
+    "label": "WHY WE WIN",
+    "items": [
+      {
+        "no": "01",
+        "title": "打破瀑布式发行",
+        "body": "经由当地代理逐国铺开的传统做法，带来了时间滞后、高成本与盗版侵害。Z-IP 将其替换为全球同步发行。"
+      },
+      {
+        "no": "02",
+        "title": "官方白名单",
+        "body": "提供权利方认可的素材清单，从结构上消除扩散方以往承担的著作权封禁风险。这正是扩散方参与的最大理由。"
+      },
+      {
+        "no": "03",
+        "title": "Day 0 粉丝群",
+        "body": "自公开首日起，世界各地的粉丝便自发扩散。剪辑创作者不是外包，而是粉丝群的共同创始人。"
+      }
+    ]
+  },
+  "closing": {
+    "heading": "让故事，抵达世界。",
+    "body": "无论你想托付作品、洽谈 IP 扩散，还是希望与我们共事。",
+    "ctaLabel": "联系我们",
+    "imageAlt": "夜色中的地球与遍布世界的光之网络"
+  },
+  "pages": {
+    "services": {
+      "header": {
+        "title": "服务",
+        "intro": "将自有 IP 同步送达世界的出版业务，与承接全球 IP 扩散的流通业务。两台引擎，在同一条流程上并行运转。",
+        "imageAlt": "排列着作画桌与显示器的制作工作室"
+      },
+      "panel": {
+        "label": "ENGINE A ｜ PANEL",
+        "heading": "让自有 IP 同步抵达世界",
+        "lead": "与顶尖创作者签订直接出版合约，通过 AI 自动化流程完成多语言化与动态漫画制作，并向全球同步发行的出版业务。",
+        "points": [
+          {
+            "title": "直接出版合约",
+            "body": "与创作者直接签约。省去中介，决策更快，作品的权利与发行条件可一体化管理。"
+          },
+          {
+            "title": "全球同步发行",
+            "body": "不再逐国推进，而是向支持语言的全部地区同步发行。自公开首日起，无时差送达世界的粉丝。"
+          },
+          {
+            "title": "实时数据验证",
+            "body": "以发行后的社交数据，可视化哪部作品在哪个国家增长，并据此判断下一步。"
+          },
+          {
+            "title": "多媒体拓展",
+            "body": "经验证的爆款，与当地伙伴一同拓展至动画、周边与游戏。"
+          }
+        ],
+        "imageAltA": "伏案原稿的漫画家手部",
+        "imageAltB": "以多种语言排版的页面特写"
+      },
+      "clipyield": {
+        "label": "ENGINE B ｜ CLIPYIELD",
+        "heading": "承接全球 IP 的扩散",
+        "lead": "CLIPYIELD 从世界各地的剪辑创作者与粉丝处采购「扩散这一成果」，并以成果的形式提供给 IP 方。",
+        "steps": [
+          {
+            "no": "01",
+            "title": "案件登记",
+            "body": "从 IP 方处接收希望扩散的作品与目的，登记为案件。"
+          },
+          {
+            "no": "02",
+            "title": "公开白名单",
+            "body": "公开权利方认可的素材清单。剪辑创作者可在此范围内安心创作。"
+          },
+          {
+            "no": "03",
+            "title": "剪辑创作者扩散",
+            "body": "各国的剪辑创作者与粉丝在本国平台发布剪辑与二次创作，同步多发地扩散。"
+          },
+          {
+            "no": "04",
+            "title": "成果测定",
+            "body": "测定哪条内容在哪个国家、送达了多少。"
+          },
+          {
+            "no": "05",
+            "title": "成果报酬支付",
+            "body": "按测定的成果向剪辑创作者支付报酬，并以成果的形式提供给 IP 方。"
+          }
+        ],
+        "note": "扩散方的著作权风险，通过权利方认可的白名单从结构上予以消除。",
+        "external": "了解 CLIPYIELD"
+      },
+      "dashboard": {
+        "label": "ANALYTICS",
+        "heading": "分析仪表盘",
+        "body": "按国家、按作品，可视化在何处被阅读、被扩散。无论是自有 IP 的拓展判断，还是对受托 IP 的报告，都使用同一套基础。"
+      },
+      "flow": {
+        "label": "HOW TO START",
+        "heading": "启动流程",
+        "steps": [
+          {
+            "no": "01",
+            "title": "咨询",
+            "body": "请通过表单与我们联系。"
+          },
+          {
+            "no": "02",
+            "title": "沟通了解",
+            "body": "了解作品、目的与目标地区。"
+          },
+          {
+            "no": "03",
+            "title": "签约",
+            "body": "确认条件并签订合约。"
+          },
+          {
+            "no": "04",
+            "title": "投稿录入",
+            "body": "接收原稿与素材。"
+          },
+          {
+            "no": "05",
+            "title": "开始发行",
+            "body": "载入流程，开始发行。"
+          }
+        ]
+      }
+    },
+    "about": {
+      "header": {
+        "title": "关于我们",
+        "intro": "Z-IP 是并行创办两项业务的全球出版公司。",
+        "imageAlt": "有大面窗户的办公室与人影的剪影"
+      },
+      "mission": {
+        "label": "MISSION",
+        "statement": "让世界各地的故事，以与诞生之国相同的速度，抵达任何国家。",
+        "body": [
+          "故事在国境停下，原因不在作品，而在「逐国送达」这一陈旧前提。",
+          "Z-IP 要替换这个前提。把翻译、演出、发行与扩散汇入一条流程，让作品自首日起走向世界。",
+          "出版的主轴，与扩散的基础设施。并行地拥有这两者，正是我们的打法。"
+        ]
+      },
+      "why": {
+        "label": "WHY TWO ENGINES",
+        "heading": "为何并行两台引擎",
+        "lead": "PANEL 与 CLIPYIELD 并不共享成本。两者相互增强，靠的是以下三条路径。",
+        "items": [
+          {
+            "no": "01",
+            "title": "参照效应",
+            "body": "自有 IP 的实绩成为受托业务的实证数据，受托 IP 的实绩成为签约漫画家的信用。实绩作为双方的说服材料循环流动。"
+          },
+          {
+            "no": "02",
+            "title": "网络效应",
+            "body": "受托的 IP 越多，剪辑创作者的登记与活跃就越多。由此支持的语言与国家不断扩大，下一部 IP 的扩散力随之提升。"
+          },
+          {
+            "no": "03",
+            "title": "锚定需求",
+            "body": "自有 IP 向创办初期的 CLIPYIELD 支付对价并下单。先为扩散方备好「能赚到的案件」，网络才得以启动。"
+          }
+        ]
+      },
+      "brands": {
+        "label": "BRANDS",
+        "heading": "品牌体系",
+        "lead": "Z-IP 拥有两个品牌。共同的强调色——朱——将两者结成一个集团。",
+        "panel": {
+          "name": "PANEL",
+          "role": "出版厂牌",
+          "body": "出版主轴：与创作者直接签约，让自有 IP 同步抵达世界。"
+        },
+        "clipyield": {
+          "name": "CLIPYIELD",
+          "role": "扩散平台",
+          "body": "承接全球 IP 扩散的流通基础设施。",
+          "external": "前往 CLIPYIELD"
+        }
+      },
+      "team": {
+        "label": "TEAM",
+        "heading": "团队",
+        "lead": "以职位呈现构成。姓名与经历确定后将在此刊载。",
+        "roles": [
+          {
+            "role": "CEO",
+            "note": "首席执行官"
+          },
+          {
+            "role": "COO",
+            "note": "首席运营官"
+          },
+          {
+            "role": "CMO",
+            "note": "首席市场官"
+          },
+          {
+            "role": "CTO",
+            "note": "首席技术官"
+          },
+          {
+            "role": "CFO",
+            "note": "首席财务官"
+          }
+        ]
+      },
+      "company": {
+        "label": "COMPANY",
+        "heading": "公司概要",
+        "rows": [
+          {
+            "key": "公司名称",
+            "value": "株式会社Z-IPホールディングス"
+          },
+          {
+            "key": "英文名称",
+            "value": "Z-IP Holdings, Inc."
+          },
+          {
+            "key": "成立",
+            "value": "2026年10月1日"
+          },
+          {
+            "key": "业务内容",
+            "value": "全球出版业务（PANEL）与全球 IP 流通业务（CLIPYIELD）"
+          },
+          {
+            "key": "注册资本",
+            "value": "100万日元"
+          }
+        ],
+        "pending": "确定后予以记载"
+      },
+      "careers": {
+        "label": "CAREERS",
+        "heading": "与我们共事",
+        "body": "我们正在寻找从零开始、一同打造面向世界的出版公司的伙伴。",
+        "cta": "咨询招聘"
+      }
+    },
+    "contact": {
+      "header": {
+        "title": "联系我们",
+        "intro": "无论是托付作品、洽谈 IP 扩散，还是招聘与采访——请选择您的事由并与我们联系。"
+      },
+      "typeLabel": "咨询类别",
+      "typePlaceholder": "请选择",
+      "types": {
+        "entrust": "想托付作品（漫画家 / 创作者）",
+        "distribute": "想洽谈 IP 扩散（出版社 / 工作室 / IP 方）",
+        "clipper": "想作为剪辑创作者参与",
+        "recruit": "关于招聘",
+        "press": "采访 / 媒体",
+        "other": "其他"
+      },
+      "clipperNotice": "作为剪辑创作者的参与，请不要通过本表单，而是在 CLIPYIELD 网站上登记。",
+      "clipperLink": "在 CLIPYIELD 登记",
+      "labelName": "姓名",
+      "labelCompany": "公司 / 团体名称",
+      "labelEmail": "电子邮箱",
+      "labelCountry": "国家 / 地区",
+      "countryPlaceholder": "请选择",
+      "labelMessage": "咨询内容",
+      "labelConsent": "我同意对个人信息的处理",
+      "optional": "选填",
+      "required": "必填",
+      "submit": "发送",
+      "errorRequired": "此项为必填",
+      "errorEmail": "电子邮箱格式不正确",
+      "errorConsent": "发送需要您的同意",
+      "otherHeading": "表单以外的联系方式",
+      "emailLabel": "邮箱",
+      "addressLabel": "所在地",
+      "countries": [
+        "日本",
+        "美国",
+        "中国",
+        "韩国",
+        "台湾",
+        "东南亚",
+        "欧洲",
+        "其他"
+      ]
+    }
+  },
+  "thanks": {
+    "title": "已收到您的提交",
+    "heading": "感谢您。",
+    "body": "我们已收到您的咨询，负责人将尽快回复您。",
+    "back": "返回首页"
+  },
+  "footer": {
+    "description": "让日本的故事同步抵达世界的全球出版公司。",
+    "sitemapHeading": "网站地图",
+    "brandHeading": "品牌",
+    "legalHeading": "法务",
+    "privacy": "隐私政策",
+    "tokushoho": "特定商业交易法标示",
+    "brandPanelDesc": "全球出版厂牌",
+    "brandClipyieldDesc": "全球 IP 流通平台",
+    "copyright": "© 2026 Z-IP Holdings, Inc."
+  }
+}

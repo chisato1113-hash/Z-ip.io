@@ -1,0 +1,346 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations, type Locale } from '../../i18n/ui';
+import PageHeader from '../PageHeader.astro';
+import SectionHeading from '../SectionHeading.astro';
+import FadeIn from '../FadeIn.astro';
+
+import headerImg from '../../assets/images/header-about.jpg';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const a = t.pages.about;
+
+const CLIPYIELD_URL = 'https://chisato1113-hash.github.io/CLIPYIELD.io/';
+const contactHref = getRelativeLocaleUrl(locale, 'contact');
+const title = `${a.header.title}｜${t.meta.siteName}`;
+---
+
+<BaseLayout locale={locale} title={title} description={a.header.intro} slug="about">
+  <PageHeader
+    title={a.header.title}
+    intro={a.header.intro}
+    variant="photo"
+    image={headerImg}
+    imageAlt={a.header.imageAlt}
+  />
+
+  <!-- ミッション -->
+  <section class="zi-section zi-surface-paper">
+    <div class="zi-container mission">
+      <FadeIn>
+        <p class="zi-label mission-label">{a.mission.label}</p>
+        <p class="mission-statement">{a.mission.statement}</p>
+        <div class="mission-body">
+          {a.mission.body.map((line) => <p>{line}</p>)}
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- なぜ2つのエンジンを並行させるのか -->
+  <section class="zi-section zi-surface-ink">
+    <div class="zi-container">
+      <FadeIn>
+        <SectionHeading label={a.why.label} heading={a.why.heading} onDark={true} />
+        <p class="lead onink">{a.why.lead}</p>
+      </FadeIn>
+      <div class="why-grid">
+        {
+          a.why.items.map((item, i) => (
+            <FadeIn delay={i * 70}>
+              <div class="why-item">
+                <span class="why-no">{item.no}</span>
+                <h3 class="why-title">{item.title}</h3>
+                <p class="why-body">{item.body}</p>
+              </div>
+            </FadeIn>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ブランド体系 -->
+  <section class="zi-section zi-surface-paper">
+    <div class="zi-container">
+      <FadeIn>
+        <SectionHeading label={a.brands.label} heading={a.brands.heading} />
+        <p class="lead">{a.brands.lead}</p>
+      </FadeIn>
+      <div class="brands-grid">
+        <FadeIn>
+          <div class="brand-card">
+            <h3 class="brand-name">{a.brands.panel.name}</h3>
+            <p class="brand-role zi-label">{a.brands.panel.role}</p>
+            <p class="brand-body">{a.brands.panel.body}</p>
+          </div>
+        </FadeIn>
+        <FadeIn delay={80}>
+          <div class="brand-card">
+            <h3 class="brand-name">{a.brands.clipyield.name}</h3>
+            <p class="brand-role zi-label">{a.brands.clipyield.role}</p>
+            <p class="brand-body">{a.brands.clipyield.body}</p>
+            <a class="zi-textlink brand-link" href={CLIPYIELD_URL} target="_blank" rel="noopener">
+              {a.brands.clipyield.external}<span class="ext" aria-hidden="true"> ↗</span>
+            </a>
+          </div>
+        </FadeIn>
+      </div>
+    </div>
+  </section>
+
+  <!-- チーム（役職のみ・氏名は【要確認】） -->
+  <section class="zi-section zi-surface-paper team-sec">
+    <div class="zi-container">
+      <FadeIn>
+        <SectionHeading label={a.team.label} heading={a.team.heading} />
+        <p class="lead">{a.team.lead}</p>
+      </FadeIn>
+      {/* TODO(z-ip): 役員の氏名・顔写真・経歴が確定次第、各カードに追加する。架空の人物は置かない。 */}
+      <div class="team-grid">
+        {
+          a.team.roles.map((r) => (
+            <div class="team-card">
+              <div class="team-photo" aria-hidden="true" />
+              <span class="team-role">{r.role}</span>
+              <span class="team-note">{r.note}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 会社概要（事業内容以外は【要確認】で空欄） -->
+  <section class="zi-section zi-surface-ink">
+    <div class="zi-container">
+      <FadeIn><SectionHeading label={a.company.label} heading={a.company.heading} onDark={true} /></FadeIn>
+      {/* 会社概要は辞書 pages.about.company.rows で管理。所在地・代表者は Z-IP の指示により当面非表示。 */}
+      <FadeIn>
+        <dl class="company-table">
+          {
+            a.company.rows.map((row) => (
+              <div class="company-row">
+                <dt>{row.key}</dt>
+                <dd>{row.value ? row.value : <span class="pending">{a.company.pending}</span>}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- 採用 -->
+  <section class="zi-section zi-surface-paper">
+    <div class="zi-container careers">
+      <FadeIn>
+        <SectionHeading label={a.careers.label} heading={a.careers.heading} />
+        <p class="lead">{a.careers.body}</p>
+        <a class="zi-btn careers-cta" href={contactHref}>{a.careers.cta}</a>
+      </FadeIn>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    margin-top: 20px;
+    max-width: 60ch;
+    font-size: 1.0625rem;
+    color: var(--gray-500);
+  }
+  .lead.onink {
+    color: var(--gray-400);
+  }
+
+  /* Mission */
+  .mission {
+    max-width: 900px;
+  }
+  .mission-label {
+    color: var(--vermillion);
+    margin-bottom: 24px;
+  }
+  .mission-statement {
+    font-family: var(--font-sans);
+    font-weight: 560;
+    font-size: clamp(1.6rem, 4vw, 2.75rem);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--text);
+  }
+  .mission-body {
+    margin-top: 40px;
+    max-width: 60ch;
+  }
+  .mission-body p {
+    color: var(--gray-500);
+  }
+  .mission-body p + p {
+    margin-top: 1.2em;
+  }
+
+  /* Why */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 48px;
+  }
+  @media (min-width: 768px) {
+    .why-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .why-item {
+    padding: 32px 0;
+    border-top: 1px solid var(--ink-600);
+  }
+  @media (min-width: 768px) {
+    .why-item {
+      padding: 8px 28px 8px 0;
+      border-top: none;
+      border-left: 1px solid var(--ink-600);
+      padding-left: 28px;
+    }
+    .why-item:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+  .why-no {
+    font-family: var(--font-label);
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    color: var(--vermillion-light);
+    line-height: 1;
+  }
+  .why-title {
+    margin-top: 16px;
+    font-size: 1.25rem;
+  }
+  .why-body {
+    margin-top: 12px;
+    color: var(--gray-400);
+    font-size: 0.9375rem;
+  }
+
+  /* Brands */
+  .brands-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  @media (min-width: 768px) {
+    .brands-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+  }
+  .brand-card {
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+  }
+  .brand-name {
+    font-family: var(--font-label);
+    letter-spacing: 0.06em;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  .brand-role {
+    color: var(--vermillion);
+    margin-top: 8px;
+  }
+  .brand-body {
+    margin-top: 16px;
+    color: var(--gray-500);
+  }
+  .brand-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: var(--font-label);
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+  }
+  .ext {
+    color: var(--vermillion);
+  }
+
+  /* Team */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  @media (min-width: 768px) {
+    .team-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .team-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .team-photo {
+    aspect-ratio: 1 / 1;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  .team-role {
+    margin-top: 16px;
+    font-family: var(--font-label);
+    letter-spacing: 0.08em;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+  .team-note {
+    margin-top: 4px;
+    color: var(--gray-500);
+    font-size: 0.75rem;
+  }
+
+  /* Company table */
+  .company-table {
+    margin-top: 40px;
+    border-top: 1px solid var(--ink-600);
+  }
+  .company-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--ink-600);
+  }
+  @media (min-width: 640px) {
+    .company-row {
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+    }
+  }
+  .company-row dt {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+  }
+  .company-row dd {
+    color: var(--paper);
+  }
+  .pending {
+    color: var(--gray-500);
+    font-size: 0.875rem;
+  }
+
+  /* Careers */
+  .careers-cta {
+    margin-top: 32px;
+  }
+</style>

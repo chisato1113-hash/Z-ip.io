@@ -1,0 +1,32 @@
+---
+interface Props {
+  /** ダーク面(true)なら朱は vermillion-light、ライト面(false)なら vermillion */
+  onDark?: boolean;
+  /** em 単位の相対サイズ */
+  size?: string;
+}
+const { onDark = true, size = '1.25rem' } = Astro.props;
+---
+
+<!-- Z-IP ワードマーク（テキストロゴ）。Z と IP の間のハイフンだけ朱にする（第5-1章）。
+     ストック素材をロゴに使わない（第8-1章）。必ず自前のテキストで出す。 -->
+<span class="wordmark" data-on-dark={onDark} style={`font-size:${size}`}>
+  Z<span class="hyphen" aria-hidden="true">-</span>IP
+</span>
+
+<style>
+  .wordmark {
+    /* Linear風：Inter のサンセリフ・字間を詰める */
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: inherit;
+  }
+  .hyphen {
+    color: var(--vermillion-light);
+  }
+  .wordmark[data-on-dark='false'] .hyphen {
+    color: var(--vermillion);
+  }
+</style>

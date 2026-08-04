@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: ImageMetadata;
+  imageAlt: string;
+  tag: string;
+  name: string;
+  label: string;
+  heading: string;
+  body: string;
+  linkHref: string;
+  linkLabel: string;
+}
+const { image, imageAlt, tag, name, label, heading, body, linkHref, linkLabel } = Astro.props;
+---
+
+<article class="engine">
+  <!-- モノクロ写真（4:5 縦位置）。上に朱の小ラベルを重ねる = サイトの視覚モチーフ -->
+  <div class="engine-media zi-media">
+    <Image src={image} alt={imageAlt} widths={[400, 800]} sizes="(min-width: 768px) 40vw, 100vw" loading="lazy" />
+    <span class="engine-tag zi-label">{tag}</span>
+  </div>
+
+  <div class="engine-body">
+    <p class="zi-label engine-label">{label}</p>
+    <h3 class="engine-name">{name}</h3>
+    <h4 class="engine-heading">{heading}</h4>
+    <p class="engine-text">{body}</p>
+    <a class="engine-link zi-textlink" href={linkHref}>{linkLabel}</a>
+  </div>
+</article>
+
+<style>
+  .engine {
+    display: flex;
+    flex-direction: column;
+  }
+  .engine-media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background-color: var(--bg-card);
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+  }
+  .engine-media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* 画像内に置く小さなラベルのみ角丸 2px を許可（第4-4章） */
+  .engine-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: var(--accent-fill);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: var(--radius);
+  }
+  .engine-body {
+    padding-top: 28px;
+  }
+  .engine-label {
+    color: var(--vermillion);
+    margin-bottom: 12px;
+  }
+  .engine-name {
+    font-family: var(--font-label);
+    letter-spacing: 0.06em;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  .engine-heading {
+    margin-top: 6px;
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+  }
+  .engine-text {
+    margin-top: 18px;
+    color: var(--gray-500);
+    max-width: 34em;
+  }
+  .engine-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: var(--font-label);
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+</style>

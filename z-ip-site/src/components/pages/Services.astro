@@ -1,0 +1,343 @@
+---
+import { Image } from 'astro:assets';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations, type Locale } from '../../i18n/ui';
+import PageHeader from '../PageHeader.astro';
+import SectionHeading from '../SectionHeading.astro';
+import FadeIn from '../FadeIn.astro';
+
+import headerImg from '../../assets/images/header-services.jpg';
+import panelA from '../../assets/images/panel-detail-1.jpg';
+import panelB from '../../assets/images/panel-detail-2.jpg';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const s = t.pages.services;
+
+const CLIPYIELD_URL = 'https://chisato1113-hash.github.io/CLIPYIELD.io/';
+const contactHref = getRelativeLocaleUrl(locale, 'contact');
+const title = `${s.header.title}｜${t.meta.siteName}`;
+---
+
+<BaseLayout locale={locale} title={title} description={s.header.intro} slug="services">
+  <PageHeader
+    title={s.header.title}
+    intro={s.header.intro}
+    variant="photo"
+    image={headerImg}
+    imageAlt={s.header.imageAlt}
+  />
+
+  <!-- ENGINE A ｜ PANEL -->
+  <section class="zi-section zi-surface-paper">
+    <div class="zi-container">
+      <FadeIn>
+        <SectionHeading label={s.panel.label} heading={s.panel.heading} />
+        <p class="lead">{s.panel.lead}</p>
+      </FadeIn>
+      <div class="panel-photos">
+        <div class="zi-media photo"><Image src={panelA} alt={s.panel.imageAltA} widths={[400, 800]} sizes="(min-width:768px) 45vw, 100vw" loading="lazy" /></div>
+        <div class="zi-media photo"><Image src={panelB} alt={s.panel.imageAltB} widths={[400, 800]} sizes="(min-width:768px) 45vw, 100vw" loading="lazy" /></div>
+      </div>
+      <div class="points">
+        {
+          s.panel.points.map((p, i) => (
+            <FadeIn delay={i * 60}>
+              <div class="point">
+                <h3 class="point-title">{p.title}</h3>
+                <p class="point-body">{p.body}</p>
+              </div>
+            </FadeIn>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGINE B ｜ CLIPYIELD -->
+  <section class="zi-section zi-surface-paper">
+    <div class="zi-container">
+      <FadeIn>
+        <SectionHeading label={s.clipyield.label} heading={s.clipyield.heading} />
+        <p class="lead">{s.clipyield.lead}</p>
+      </FadeIn>
+      <ol class="steps5">
+        {
+          s.clipyield.steps.map((step) => (
+            <FadeIn as="li" class="step5">
+              <span class="step5-no">{step.no}</span>
+              <div>
+                <h3 class="step5-title">{step.title}</h3>
+                <p class="step5-body">{step.body}</p>
+              </div>
+            </FadeIn>
+          ))
+        }
+      </ol>
+      <FadeIn>
+        <p class="note">{s.clipyield.note}</p>
+        <a class="zi-textlink external" href={CLIPYIELD_URL} target="_blank" rel="noopener">
+          {s.clipyield.external}<span class="ext" aria-hidden="true"> ↗</span>
+        </a>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- 分析ダッシュボード -->
+  <section class="zi-section zi-surface-ink">
+    <div class="zi-container dashboard-grid">
+      <FadeIn>
+        <SectionHeading label={s.dashboard.label} heading={s.dashboard.heading} onDark={true} />
+        <p class="lead onink">{s.dashboard.body}</p>
+      </FadeIn>
+      <FadeIn>
+        {/* TODO(z-ip): 実画面のスクリーンショットに差し替え。架空UIを実在のように描かない */}
+        <div class="dash-frame" aria-hidden="true">
+          <svg viewBox="0 0 420 240" role="presentation">
+            <rect x="0.5" y="0.5" width="419" height="239" fill="none" stroke="currentColor" stroke-width="1" opacity="0.35" />
+            <line x1="40" y1="200" x2="392" y2="200" stroke="currentColor" stroke-width="1" opacity="0.6" />
+            <line x1="40" y1="40" x2="40" y2="200" stroke="currentColor" stroke-width="1" opacity="0.6" />
+            <g fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="70" y="150" width="26" height="50" />
+              <rect x="120" y="110" width="26" height="90" />
+              <rect x="170" y="130" width="26" height="70" />
+              <rect x="220" y="80" width="26" height="120" />
+              <rect x="270" y="120" width="26" height="80" />
+              <rect x="320" y="96" width="26" height="104" />
+            </g>
+            <polyline points="83,150 133,110 183,130 233,80 283,120 333,96" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5" />
+          </svg>
+          <span class="dash-todo zi-label">IMAGE TODO · DASHBOARD</span>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- 導入までの流れ -->
+  <section class="zi-section zi-surface-paper">
+    <div class="zi-container">
+      <FadeIn><SectionHeading label={s.flow.label} heading={s.flow.heading} /></FadeIn>
+      <ol class="how-grid">
+        {
+          s.flow.steps.map((step, i) => (
+            <FadeIn as="li" class="how-item" delay={i * 60}>
+              <span class="how-no">{step.no}</span>
+              <h3 class="how-title">{step.title}</h3>
+              <p class="how-body">{step.body}</p>
+            </FadeIn>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="zi-section cta-band zi-surface-ink-900">
+    <div class="zi-container cta-inner">
+      <FadeIn>
+        <h2 class="cta-heading">{t.closing.heading}</h2>
+        <a class="zi-btn" href={contactHref}>{t.closing.ctaLabel}</a>
+      </FadeIn>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    margin-top: 20px;
+    max-width: 60ch;
+    font-size: 1.0625rem;
+    color: var(--gray-500);
+  }
+  .lead.onink {
+    color: var(--gray-400);
+  }
+  .note {
+    margin-top: 40px;
+    max-width: 60ch;
+    color: var(--gray-500);
+  }
+  .note.onink {
+    color: var(--gray-400);
+  }
+
+  /* PANEL */
+  .panel-photos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  @media (min-width: 768px) {
+    .panel-photos {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .photo {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  .photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .points {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  @media (min-width: 768px) {
+    .points {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 56px;
+    }
+  }
+  .point {
+    padding-top: 20px;
+    border-top: 1px solid var(--gray-200);
+  }
+  .point-title {
+    font-size: 1.25rem;
+  }
+  .point-body {
+    margin-top: 10px;
+    color: var(--gray-500);
+    font-size: 0.9375rem;
+  }
+
+  /* CLIPYIELD 5 steps */
+  .steps5 {
+    margin-top: 48px;
+    display: grid;
+    gap: 0;
+  }
+  .step5 {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    padding: 28px 0;
+    border-top: 1px solid var(--gray-200);
+    align-items: baseline;
+  }
+  .step5-no {
+    font-family: var(--font-label);
+    font-size: 1.5rem;
+    color: var(--vermillion);
+    min-width: 2ch;
+  }
+  .step5-title {
+    font-size: 1.25rem;
+  }
+  .step5-body {
+    margin-top: 8px;
+    color: var(--gray-500);
+    max-width: 60ch;
+  }
+  .external {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: var(--font-label);
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+  }
+  .ext {
+    color: var(--vermillion);
+  }
+
+  /* Dashboard */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+  }
+  .dash-frame {
+    position: relative;
+    color: var(--gray-400);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    padding: 24px;
+  }
+  .dash-frame svg {
+    width: 100%;
+    height: auto;
+  }
+  .dash-todo {
+    position: absolute;
+    right: 16px;
+    bottom: 12px;
+    color: var(--gray-500);
+    font-size: 0.625rem;
+  }
+
+  /* How to start */
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 48px;
+  }
+  @media (min-width: 768px) {
+    .how-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .how-item {
+    padding: 24px 0;
+    border-top: 1px solid var(--gray-200);
+  }
+  @media (min-width: 768px) {
+    .how-item {
+      padding: 8px 20px 8px 0;
+      border-top: none;
+      border-left: 1px solid var(--gray-200);
+      padding-left: 20px;
+    }
+    .how-item:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+  .how-no {
+    font-family: var(--font-label);
+    font-size: 1.25rem;
+    color: var(--vermillion);
+  }
+  .how-title {
+    margin-top: 10px;
+    font-size: 1.0625rem;
+  }
+  .how-body {
+    margin-top: 8px;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+  }
+
+  /* CTA band */
+  .cta-band {
+    padding-block: clamp(64px, 10vh, 120px);
+  }
+  .cta-inner {
+    text-align: center;
+  }
+  .cta-heading {
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+</style>

@@ -1,0 +1,146 @@
+---
+interface Props {
+  label: string;
+  heading: string;
+  sub: string;
+  scrollHint: string;
+}
+const { label, heading, sub, scrollHint } = Astro.props;
+
+// 見出しは最後の読点以降（例：「世界同時に。」）を1つのまとまりとして折り返さない。
+// 収まらない場合も、読点の位置でのみ改行する。
+const m = heading.match(/^(.*[、，,]\s*)(.+)$/s);
+const headLead = m ? m[1] : '';
+const headTail = m ? m[2] : heading;
+---
+
+<section class="hero">
+  <!-- 動画は装飾（音声なし）。aria-hidden で明示。必ずグレースケール（.zi-media）。
+       モバイル(<768px)では <source media> によりダウンロードされず poster のみ表示。
+       {/* TODO(z-ip): public/video/ に hero.mp4 / hero.webm / hero-poster.jpg を用意する。
+          現状 poster はプレースホルダー、mp4/webm は未配置のため poster が表示される。 */} -->
+  <video
+    class="hero-video zi-media"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/video/hero-poster.jpg"
+    aria-hidden="true"
+    data-hero-video
+  >
+    <source src="/video/hero.webm" type="video/webm" media="(min-width: 768px)" />
+    <source src="/video/hero.mp4" type="video/mp4" media="(min-width: 768px)" />
+  </video>
+
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="zi-container hero-inner">
+    <div class="hero-copy">
+      <p class="zi-label hero-label">{label}</p>
+      <h1 class="hero-heading">{headLead}<span class="nowrap">{headTail}</span></h1>
+      <p class="hero-sub">{sub}</p>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span class="scroll-hint-text zi-label">{scrollHint}</span>
+    <span class="scroll-hint-line"></span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100svh;
+    min-height: 560px;
+    overflow: hidden;
+    background-color: var(--ink-900);
+    color: var(--paper);
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(11, 10, 9, 0.55) 0%,
+      rgba(11, 10, 9, 0.35) 45%,
+      rgba(11, 10, 9, 0.85) 100%
+    );
+  }
+  .hero-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end; /* 画面下1/3に配置 */
+    padding-bottom: clamp(96px, 18vh, 200px);
+  }
+  .hero-copy {
+    text-align: left; /* 中央揃えにしない（第6-1章） */
+    max-width: 46rem;
+  }
+  .hero-label {
+    color: var(--vermillion-light);
+    margin-bottom: 20px;
+  }
+  .hero-heading {
+    color: var(--white);
+  }
+  .hero-heading .nowrap {
+    white-space: nowrap;
+  }
+  .hero-sub {
+    margin-top: 24px;
+    max-width: 42em;
+    color: var(--gray-300);
+    font-size: 1.0625rem;
+  }
+  /* 最下部中央の静かなスクロール誘導（1pxの縦線） */
+  .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .scroll-hint-text {
+    color: var(--gray-400);
+    font-size: 0.625rem;
+  }
+  .scroll-hint-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(180deg, var(--gray-400), transparent);
+  }
+</style>
+
+<script>
+  // 許可されたクライアントJS②：prefers-reduced-motion 判定と再生制御。
+  const video = document.querySelector<HTMLVideoElement>('[data-hero-video]');
+  if (video) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      // 再生せずポスター画像を表示（第4-5章・必須）。ソースを外して読み込みも止める。
+      video.removeAttribute('autoplay');
+      video.querySelectorAll('source').forEach((s) => s.remove());
+      video.load();
+      video.pause();
+    } else {
+      // iOS 等で autoplay 属性だけでは再生されない場合に備えて明示的に再生を試みる
+      const tryPlay = () => video.play().catch(() => {});
+      if (video.readyState >= 2) tryPlay();
+      else video.addEventListener('loadeddata', tryPlay, { once: true });
+    }
+  }
+</script>

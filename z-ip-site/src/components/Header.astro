@@ -1,0 +1,292 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations, type Locale } from '../i18n/ui';
+import LangSwitcher from './LangSwitcher.astro';
+import Wordmark from './Wordmark.astro';
+
+interface Props {
+  locale: Locale;
+  /** 現在ページのロケール非依存スラッグ: '' | 'services' | 'about' | 'contact' */
+  currentSlug: string;
+  /** TOPページのヒーロー上でのみ true（最初は背景透過） */
+  transparentStart?: boolean;
+}
+
+const { locale, currentSlug, transparentStart = false } = Astro.props;
+const t = useTranslations(locale);
+
+const navItems = [
+  { slug: '', label: t.nav.top },
+  { slug: 'services', label: t.nav.services },
+  { slug: 'about', label: t.nav.about },
+  { slug: 'contact', label: t.nav.contact },
+];
+
+const isActive = (slug: string) => slug === currentSlug;
+---
+
+<header class="zi-header" data-transparent-start={transparentStart} data-solid={!transparentStart}>
+  <div class="zi-container bar">
+    <a class="brand" href={getRelativeLocaleUrl(locale, '')} aria-label={t.meta.siteName}>
+      <Wordmark />
+    </a>
+
+    <nav class="desktop-nav" aria-label="Global">
+      <ul>
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={getRelativeLocaleUrl(locale, item.slug)}
+                aria-current={isActive(item.slug) ? 'page' : undefined}
+                class:list={['nav-link', { active: isActive(item.slug) }]}
+              >
+                <span class="dot" aria-hidden="true" />
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="desktop-lang">
+      <LangSwitcher locale={locale} onDark={true} />
+    </div>
+
+    <button
+      class="hamburger"
+      type="button"
+      aria-label={t.nav.top}
+      aria-expanded="false"
+      aria-controls="mobile-overlay"
+      data-menu-toggle
+    >
+      <span class="hamburger-box" aria-hidden="true">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </span>
+    </button>
+  </div>
+
+  <!-- モバイル全画面オーバーレイ -->
+  <div id="mobile-overlay" class="mobile-overlay" data-menu-panel hidden>
+    <nav aria-label="Global (mobile)">
+      <ul>
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={getRelativeLocaleUrl(locale, item.slug)}
+                aria-current={isActive(item.slug) ? 'page' : undefined}
+                class:list={['mobile-nav-link', { active: isActive(item.slug) }]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="mobile-lang">
+      <LangSwitcher locale={locale} onDark={true} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .zi-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 64px;
+    transition: background-color 200ms ease;
+  }
+  .bar {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    color: var(--paper);
+    margin-right: auto;
+  }
+
+  /* --- 背景の出し分け（第5-1章） --- */
+  /* 下層ページ、または TOP でスクロール後：--ink-900 (0.96) + blur */
+  .zi-header[data-solid='true'] {
+    background-color: rgba(8, 9, 10, 0.72);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border-bottom: 1px solid var(--border);
+  }
+  /* TOP のヒーロー上（初期）：透過 */
+  .zi-header[data-transparent-start='true'][data-solid='false'] {
+    background-color: transparent;
+    backdrop-filter: none;
+  }
+
+  /* --- デスクトップナビ --- */
+  .desktop-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-label);
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+    transition: color 150ms ease;
+  }
+  .nav-link:hover {
+    color: var(--paper);
+  }
+  .nav-link.active {
+    color: var(--paper);
+  }
+  /* 現在ページは下線ではなく朱の点（4px円）を左に置く */
+  .nav-link .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--vermillion-light);
+    opacity: 0;
+    transition: opacity 150ms ease;
+  }
+  .nav-link.active .dot {
+    opacity: 1;
+  }
+
+  .desktop-lang {
+    margin-left: 4px;
+  }
+
+  /* --- ハンバーガー（<1024px で表示） --- */
+  .hamburger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .hamburger-box {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 24px;
+  }
+  .hamburger-line {
+    display: block;
+    height: 1.5px;
+    width: 100%;
+    background-color: var(--paper);
+    transition:
+      transform 200ms ease,
+      opacity 200ms ease;
+  }
+  .zi-header[data-menu-open='true'] .hamburger-line:nth-child(1) {
+    transform: translateY(3.75px) rotate(45deg);
+  }
+  .zi-header[data-menu-open='true'] .hamburger-line:nth-child(2) {
+    transform: translateY(-3.75px) rotate(-45deg);
+  }
+
+  /* --- モバイルオーバーレイ --- */
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background-color: var(--ink-900);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 48px;
+    padding: 96px var(--pad-x) 48px;
+  }
+  .mobile-overlay[hidden] {
+    display: none;
+  }
+  .mobile-overlay nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .mobile-nav-link {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1.2;
+    color: var(--gray-300);
+  }
+  .mobile-nav-link.active {
+    color: var(--paper);
+  }
+  .mobile-lang {
+    padding-top: 8px;
+    border-top: 1px solid var(--ink-600);
+  }
+
+  @media (max-width: 1023px) {
+    .desktop-nav,
+    .desktop-lang {
+      display: none;
+    }
+    .hamburger {
+      display: inline-flex;
+    }
+    .brand {
+      margin-right: 0;
+    }
+  }
+</style>
+
+<script>
+  // 許可されたクライアントJS①：ハンバーガー開閉。
+  // あわせて、TOPヒーロー上のヘッダーをスクロール100pxで --ink-900 に切り替える（第5-1章）。
+  const header = document.querySelector<HTMLElement>('.zi-header');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+
+  if (header && toggle && panel) {
+    const openMenu = () => {
+      panel.hidden = false;
+      header.dataset.menuOpen = 'true';
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden'; // オーバーレイ表示中は body スクロールを止める
+    };
+    const closeMenu = () => {
+      panel.hidden = true;
+      header.dataset.menuOpen = 'false';
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    toggle.addEventListener('click', () => {
+      if (header.dataset.menuOpen === 'true') closeMenu();
+      else openMenu();
+    });
+    // オーバーレイ内のリンクを踏んだら閉じる
+    panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+    // Esc で閉じる
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && header.dataset.menuOpen === 'true') closeMenu();
+    });
+  }
+
+  // TOPページのみ：スクロール位置でヘッダー背景を切り替える
+  if (header && header.dataset.transparentStart === 'true') {
+    const onScroll = () => {
+      header.dataset.solid = window.scrollY > 100 ? 'true' : 'false';
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

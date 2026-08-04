@@ -1,0 +1,362 @@
+{
+  "meta": {
+    "siteName": "Z-IP, Inc.",
+    "titleTop": "Z-IP, Inc. | Japanese stories, everywhere at once.",
+    "descTop": "Z-IP contracts directly with manga artists, localizes and turns their work into motion comics through an AI pipeline, and delivers it worldwide at once."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "viewService": "View services",
+    "toContact": "Contact"
+  },
+  "nav": {
+    "top": "TOP",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "lang": {
+    "ja": "日本語",
+    "en": "EN",
+    "zh": "简体中文",
+    "switchAria": "Switch language"
+  },
+  "hero": {
+    "label": "GLOBAL MANGA PUBLISHER",
+    "heading": "Japanese stories, everywhere at once.",
+    "sub": "Z-IP contracts directly with manga artists, localizes and animates their work through an AI pipeline, and delivers it worldwide the same day — carried by fans everywhere.",
+    "scrollHint": "SCROLL"
+  },
+  "statement": {
+    "lines": [
+      "Somewhere, there is a story that hasn't reached you yet.",
+      "Language barriers, staggered releases, piracy — all of it grows from one outdated assumption: that stories ship one country at a time.",
+      "Z-IP replaces that assumption itself."
+    ]
+  },
+  "engines": {
+    "label": "TWO ENGINES",
+    "a": {
+      "tag": "ENGINE A",
+      "name": "PANEL",
+      "label": "GLOBAL PUBLISHING",
+      "heading": "Our own IP, delivered worldwide at once",
+      "body": "We sign direct publishing contracts with top creators, then translate and turn their work into motion comics through our AI pipeline, releasing it worldwide simultaneously. Hits validated by real-time social data move on to anime, merchandise, and games alongside local partners.",
+      "imageAlt": "A manga artist's hands at work at the drawing desk"
+    },
+    "b": {
+      "tag": "ENGINE B",
+      "name": "CLIPYIELD",
+      "label": "GLOBAL IP DISTRIBUTION",
+      "heading": "We take on the distribution of IP from anywhere",
+      "body": "We take on assignments from IP holders around the world and spread them everywhere at once through a network of local clippers and fans. A rights-holder-approved whitelist structurally removes the copyright risk that distributors used to carry.",
+      "imageAlt": "Young creators filming and editing video on their smartphones"
+    },
+    "relation": "These two are not a sequence; they run in parallel. Each one's track record becomes the other's credibility, and the depth of the distribution network drives both forward."
+  },
+  "moat": {
+    "label": "WHY WE WIN",
+    "items": [
+      {
+        "no": "01",
+        "title": "Breaking the waterfall",
+        "body": "Rolling out one country at a time through local agents has meant lag, high cost, and piracy. Z-IP replaces it with simultaneous worldwide release."
+      },
+      {
+        "no": "02",
+        "title": "An official whitelist",
+        "body": "We provide a rights-holder-approved library of assets, structurally removing the copyright-ban risk distributors used to bear. This is the single biggest reason to take part."
+      },
+      {
+        "no": "03",
+        "title": "Day-0 fandom",
+        "body": "From day one, fans worldwide spread the work themselves. Clippers are not subcontractors — they are co-founders of the fandom."
+      }
+    ]
+  },
+  "closing": {
+    "heading": "Your story, to the world.",
+    "body": "For those with a work to entrust, an IP to spread, or a place to build with us.",
+    "ctaLabel": "Contact",
+    "imageAlt": "The earth at night with a network of light spreading across the world"
+  },
+  "pages": {
+    "services": {
+      "header": {
+        "title": "Services",
+        "intro": "A publishing business that delivers our own IP worldwide at once, and a distribution business that takes on the spread of IP from anywhere. Two engines, running in parallel on one pipeline.",
+        "imageAlt": "A production studio lined with drawing desks and monitors"
+      },
+      "panel": {
+        "label": "ENGINE A ｜ PANEL",
+        "heading": "Our own IP, delivered worldwide at once",
+        "lead": "A publishing business: we sign direct contracts with top creators, localize and turn their work into motion comics through our AI pipeline, and release it worldwide simultaneously.",
+        "points": [
+          {
+            "title": "Direct publishing contracts",
+            "body": "We contract with creators directly. With no intermediary, decisions are fast, and we manage rights and distribution terms end to end."
+          },
+          {
+            "title": "Simultaneous worldwide release",
+            "body": "Not one country at a time — every region in a supported language, at once. From day one, fans everywhere get it with no delay."
+          },
+          {
+            "title": "Real-time data validation",
+            "body": "Post-release social data shows which works are growing in which countries, and informs the next move."
+          },
+          {
+            "title": "Media-mix expansion",
+            "body": "Validated hits expand into anime, merchandise, and games alongside local partners."
+          }
+        ],
+        "imageAltA": "A manga artist's hands over a manuscript",
+        "imageAltB": "A close-up of a page typeset in several languages"
+      },
+      "clipyield": {
+        "label": "ENGINE B ｜ CLIPYIELD",
+        "heading": "We take on the distribution of IP from anywhere",
+        "lead": "CLIPYIELD sources the outcome of distribution from clippers and fans around the world, and delivers that outcome to IP holders.",
+        "steps": [
+          {
+            "no": "01",
+            "title": "Register the assignment",
+            "body": "We take in the work an IP holder wants spread, and its goal, and register it as an assignment."
+          },
+          {
+            "no": "02",
+            "title": "Publish the whitelist",
+            "body": "We publish a rights-holder-approved list of assets. Clippers can create with confidence within that scope."
+          },
+          {
+            "no": "03",
+            "title": "Clippers spread it",
+            "body": "Clippers and fans in each country post clips and derivative work on their own platforms, spreading it everywhere at once."
+          },
+          {
+            "no": "04",
+            "title": "Measure the outcome",
+            "body": "We measure which posts reached how far, in which countries."
+          },
+          {
+            "no": "05",
+            "title": "Pay for the outcome",
+            "body": "Clippers are paid according to the measured outcome, and IP holders receive that outcome."
+          }
+        ],
+        "note": "The copyright risk on the distributing side is structurally removed by the rights-holder-approved whitelist.",
+        "external": "See CLIPYIELD"
+      },
+      "dashboard": {
+        "label": "ANALYTICS",
+        "heading": "Analytics dashboard",
+        "body": "By country and by title, we visualize where things are read and spread. The same foundation informs our own expansion decisions and the reports we give on IP we take on."
+      },
+      "flow": {
+        "label": "HOW TO START",
+        "heading": "How to get started",
+        "steps": [
+          {
+            "no": "01",
+            "title": "Get in touch",
+            "body": "Reach us through the form."
+          },
+          {
+            "no": "02",
+            "title": "Discovery",
+            "body": "We learn the work, the goal, and the target regions."
+          },
+          {
+            "no": "03",
+            "title": "Agreement",
+            "body": "We confirm terms and sign."
+          },
+          {
+            "no": "04",
+            "title": "Intake",
+            "body": "We receive the manuscript and assets."
+          },
+          {
+            "no": "05",
+            "title": "Go live",
+            "body": "It goes on the pipeline, and distribution begins."
+          }
+        ]
+      }
+    },
+    "about": {
+      "header": {
+        "title": "About",
+        "intro": "Z-IP is a global publisher launching two businesses in parallel.",
+        "imageAlt": "An office with large windows and the silhouette of a figure"
+      },
+      "mission": {
+        "label": "MISSION",
+        "statement": "Stories reach every country as fast as the one they were born in.",
+        "body": [
+          "Stories don't stop at borders because of anything in the work. They stop because of an old assumption: deliver one country at a time.",
+          "Z-IP replaces that assumption. Translation, staging, distribution, and reach live on one pipeline, and the work goes worldwide from day one.",
+          "A publishing core, and a distribution infrastructure. Holding both in parallel is how we compete."
+        ]
+      },
+      "why": {
+        "label": "WHY TWO ENGINES",
+        "heading": "Why run two engines in parallel",
+        "lead": "PANEL and CLIPYIELD do not share costs. They strengthen each other through three routes.",
+        "items": [
+          {
+            "no": "01",
+            "title": "Reference effect",
+            "body": "The track record of our own IP becomes evidence for distribution sales, and the results on IP we take on become credibility when signing artists. Results circulate as proof for both sides."
+          },
+          {
+            "no": "02",
+            "title": "Network effect",
+            "body": "The more IP we take on, the more clippers register and stay active. That widens the languages and countries covered, and raises the reach available to the next IP."
+          },
+          {
+            "no": "03",
+            "title": "Anchor demand",
+            "body": "Our own IP pays and places orders with an early-stage CLIPYIELD. Putting paying work in front of the distribution side first is what sets the network in motion."
+          }
+        ]
+      },
+      "brands": {
+        "label": "BRANDS",
+        "heading": "Brand structure",
+        "lead": "Z-IP holds two brands. Their shared accent — vermillion — binds them as one group.",
+        "panel": {
+          "name": "PANEL",
+          "role": "Publishing label",
+          "body": "The publishing core: direct contracts with creators, our own IP delivered worldwide at once."
+        },
+        "clipyield": {
+          "name": "CLIPYIELD",
+          "role": "Distribution platform",
+          "body": "The distribution infrastructure that takes on the spread of IP from anywhere.",
+          "external": "Go to CLIPYIELD"
+        }
+      },
+      "team": {
+        "label": "TEAM",
+        "heading": "Team",
+        "lead": "We show the structure by role. Names and backgrounds will appear here once confirmed.",
+        "roles": [
+          {
+            "role": "CEO",
+            "note": "Chief Executive Officer"
+          },
+          {
+            "role": "COO",
+            "note": "Chief Operating Officer"
+          },
+          {
+            "role": "CMO",
+            "note": "Chief Marketing Officer"
+          },
+          {
+            "role": "CTO",
+            "note": "Chief Technology Officer"
+          },
+          {
+            "role": "CFO",
+            "note": "Chief Financial Officer"
+          }
+        ]
+      },
+      "company": {
+        "label": "COMPANY",
+        "heading": "Company profile",
+        "rows": [
+          {
+            "key": "Company name",
+            "value": "株式会社Z-IPホールディングス"
+          },
+          {
+            "key": "Legal name (English)",
+            "value": "Z-IP Holdings, Inc."
+          },
+          {
+            "key": "Founded",
+            "value": "October 1, 2026"
+          },
+          {
+            "key": "Business",
+            "value": "Global publishing (PANEL) and global IP distribution (CLIPYIELD)"
+          },
+          {
+            "key": "Capital",
+            "value": "¥1,000,000"
+          }
+        ],
+        "pending": "To be filled once confirmed"
+      },
+      "careers": {
+        "label": "CAREERS",
+        "heading": "Work with us",
+        "body": "We're looking for people to build a publisher that takes on the world — from the very start.",
+        "cta": "Ask about careers"
+      }
+    },
+    "contact": {
+      "header": {
+        "title": "Contact",
+        "intro": "To entrust a work, to discuss spreading an IP, or for careers and press — choose your topic and reach out."
+      },
+      "typeLabel": "Topic",
+      "typePlaceholder": "Please select",
+      "types": {
+        "entrust": "I'd like to entrust a work (artists & creators)",
+        "distribute": "I'd like to discuss spreading an IP (publishers, studios, IP holders)",
+        "clipper": "I'd like to take part as a clipper",
+        "recruit": "Careers",
+        "press": "Press & media",
+        "other": "Other"
+      },
+      "clipperNotice": "To take part as a clipper, please register on the CLIPYIELD site rather than through this form.",
+      "clipperLink": "Register on CLIPYIELD",
+      "labelName": "Name",
+      "labelCompany": "Company / organization",
+      "labelEmail": "Email",
+      "labelCountry": "Country / region",
+      "countryPlaceholder": "Please select",
+      "labelMessage": "Message",
+      "labelConsent": "I agree to the handling of my personal information",
+      "optional": "optional",
+      "required": "required",
+      "submit": "Send",
+      "errorRequired": "This field is required",
+      "errorEmail": "Please enter a valid email address",
+      "errorConsent": "Your agreement is required to send",
+      "otherHeading": "Other ways to reach us",
+      "emailLabel": "Email",
+      "addressLabel": "Location",
+      "countries": [
+        "Japan",
+        "United States",
+        "China",
+        "Korea",
+        "Taiwan",
+        "Southeast Asia",
+        "Europe",
+        "Other"
+      ]
+    }
+  },
+  "thanks": {
+    "title": "Message received",
+    "heading": "Thank you.",
+    "body": "We've received your message. Our team will get back to you.",
+    "back": "Back to top"
+  },
+  "footer": {
+    "description": "A global publisher delivering Japanese stories everywhere at once.",
+    "sitemapHeading": "Sitemap",
+    "brandHeading": "Brands",
+    "legalHeading": "Legal",
+    "privacy": "Privacy Policy",
+    "tokushoho": "Commercial Transaction Act Notice",
+    "brandPanelDesc": "Global publishing label",
+    "brandClipyieldDesc": "Global IP distribution platform",
+    "copyright": "© 2026 Z-IP Holdings, Inc."
+  }
+}

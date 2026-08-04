@@ -1,0 +1,168 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations, type Locale } from '../i18n/ui';
+import LangSwitcher from './LangSwitcher.astro';
+import Wordmark from './Wordmark.astro';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+// CLIPYIELD は公開サイトへ外部リンク。【要確認】正式ドメイン移行後に差し替える。
+const CLIPYIELD_URL = 'https://chisato1113-hash.github.io/CLIPYIELD.io/';
+
+const sitemap = [
+  { slug: '', label: t.nav.top },
+  { slug: 'services', label: t.nav.services },
+  { slug: 'about', label: t.nav.about },
+  { slug: 'contact', label: t.nav.contact },
+];
+---
+
+<footer class="zi-footer zi-surface-ink-900">
+  <div class="zi-container">
+    <div class="cols">
+      <!-- 1. ワードマーク＋ディスクリプション＋所在地 -->
+      <div class="col brand-col">
+        <Wordmark size="1.5rem" />
+        <p class="desc">{t.footer.description}</p>
+        {/* TODO(z-ip): 所在地（正式住所）が確定次第ここに記載 */}
+      </div>
+
+      <!-- 2. サイトマップ -->
+      <nav class="col" aria-label={t.footer.sitemapHeading}>
+        <h2 class="zi-label heading">{t.footer.sitemapHeading}</h2>
+        <ul>
+          {
+            sitemap.map((item) => (
+              <li>
+                <a href={getRelativeLocaleUrl(locale, item.slug)}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- 3. ブランド（PANEL / CLIPYIELD） -->
+      <div class="col">
+        <h2 class="zi-label heading">{t.footer.brandHeading}</h2>
+        <ul>
+          <li>
+            <span class="brandname">PANEL</span>
+            <span class="branddesc">{t.footer.brandPanelDesc}</span>
+          </li>
+          <li>
+            <a href={CLIPYIELD_URL} target="_blank" rel="noopener" class="brandname link">
+              CLIPYIELD
+              <span class="ext" aria-hidden="true">↗</span>
+            </a>
+            <span class="branddesc">{t.footer.brandClipyieldDesc}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 4. 法務＋言語切替 -->
+      <div class="col">
+        <h2 class="zi-label heading">{t.footer.legalHeading}</h2>
+        <ul>
+          {/* TODO(z-ip): プライバシーポリシー本文（3言語）確定後にリンク先を設定 */}
+          <li><span class="pending">{t.footer.privacy}</span></li>
+          {/* TODO(z-ip): 特定商取引法に基づく表記の要否を法務レビューで確認。要なら追加 */}
+        </ul>
+        <div class="footer-lang">
+          <LangSwitcher locale={locale} onDark={true} />
+        </div>
+      </div>
+    </div>
+
+    <div class="baseline">
+      {/* TODO(z-ip): 正式英文社名が確定次第、コピーライト表記を差し替える */}
+      <small>{t.footer.copyright}</small>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .zi-footer {
+    padding-block: clamp(56px, 8vh, 96px) 32px;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .cols {
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 32px;
+    }
+  }
+  .heading {
+    color: var(--gray-400);
+    margin-bottom: 16px;
+  }
+  .desc {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    margin-top: 16px;
+    max-width: 28em;
+  }
+  .col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .col a {
+    color: var(--gray-300);
+    font-size: 0.875rem;
+    transition: color 150ms ease;
+  }
+  .col a:hover {
+    color: var(--paper);
+  }
+  .brandname {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-label);
+    letter-spacing: 0.08em;
+    color: var(--paper);
+    font-size: 0.9375rem;
+  }
+  .brandname.link {
+    color: var(--gray-300);
+  }
+  .brandname.link:hover {
+    color: var(--paper);
+  }
+  .ext {
+    color: var(--vermillion-light);
+    font-size: 0.75em;
+  }
+  .branddesc {
+    display: block;
+    color: var(--gray-400);
+    font-size: 0.8125rem;
+    margin-top: 2px;
+  }
+  .pending {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+  }
+  .footer-lang {
+    margin-top: 24px;
+  }
+  .baseline {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--ink-600);
+  }
+  .baseline small {
+    color: var(--gray-400);
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+</style>

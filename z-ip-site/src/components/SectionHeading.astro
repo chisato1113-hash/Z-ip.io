@@ -1,0 +1,42 @@
+---
+interface Props {
+  /** 英字小見出し（朱ラベル） */
+  label?: string;
+  /** 見出し本文（任意。ラベルのみの場合もある） */
+  heading?: string;
+  onDark?: boolean;
+  /** 見出しのみ中央寄せ可。本文段落は常に左寄せ（第4-6章） */
+  align?: 'left' | 'center';
+  /** 見出しの要素レベル */
+  as?: 'h1' | 'h2' | 'h3';
+}
+const { label, heading, onDark = false, align = 'left', as = 'h2' } = Astro.props;
+const Heading = as;
+// 見出しテキストが無いラベルのみのセクションでも、見出しレベルを飛ばさないよう
+// ラベル自体を見出し要素（既定 h2）として出す（第10章：h1→h2→h3 の順序）。
+const LabelTag = label && !heading ? as : 'p';
+---
+
+<div class:list={['section-heading', `align-${align}`]} data-on-dark={onDark}>
+  {label && <LabelTag class="zi-label label">{label}</LabelTag>}
+  {heading && <Heading class="heading">{heading}</Heading>}
+</div>
+
+<style>
+  .section-heading.align-center {
+    text-align: center;
+  }
+  .label {
+    color: var(--vermillion);
+    margin-bottom: 14px;
+  }
+  .section-heading[data-on-dark='true'] .label {
+    color: var(--vermillion-light);
+  }
+  .heading {
+    max-width: 20ch;
+  }
+  .align-center .heading {
+    margin-inline: auto;
+  }
+</style>
